@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resumo Pós-Aula — Isabelle — CZK English</title>
+
+  <style>
+    :root{
+      --page-bg: #f4f7fa;
+      --card-bg: #fff;
+      --accent: #2f86e6;
+      --accent-dark: #1f6fd1;
+      --green: #36b37e;
+      --muted: #6b7280;
+      --border: #e6eef8;
+      --box-radius: 12px;
+      --card-width: 720px;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+      background:var(--page-bg);
+      font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:48px 20px;
+    }
+
+    .card{
+      width:100%;
+      max-width:var(--card-width);
+      background:var(--card-bg);
+      border-radius:18px;
+      padding:28px;
+      box-shadow:0 6px 22px rgba(33,47,60,0.06);
+      border:1px solid rgba(15,33,64,0.03);
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:8px;
+    }
+
+    .badge{
+      background:linear-gradient(180deg,#fff,#f2fbff);
+      border:1px solid var(--border);
+      padding:8px 12px;
+      border-radius:999px;
+      color:var(--accent);
+      font-weight:700;
+      font-size:0.85rem;
+    }
+
+    h1{
+      margin:0;
+      font-size:1.3rem;
+      color:#0f1724;
+    }
+
+    .meta{
+      color:var(--muted);
+      font-size:0.92rem;
+      margin-top:6px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:10px;
+      border:none;
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow:0 6px 14px rgba(47,134,230,0.12);
+    }
+
+    .btn.secondary{
+      background:#fff;
+      color:var(--accent);
+      border:1px solid var(--border);
+      box-shadow:none;
+    }
+
+    main{margin-top:18px;}
+    section{margin-top:18px;}
+
+    .panel{
+      background:#fbfdff;
+      border-radius:12px;
+      padding:16px;
+      border:1px solid var(--border);
+    }
+
+    .outline-card{
+      border-radius:10px;
+      border:1px solid var(--border);
+      padding:16px;
+      background:#fff;
+    }
+
+    .vocab-grid{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .vocab{
+      flex:1;
+      min-width:220px;
+      border-radius:10px;
+      padding:14px;
+      border:2px solid #dfeefe;
+      background:#fff;
+    }
+
+    .vocab.green{
+      border-color:#c9f3dc;
+      background:#f5fff6;
+    }
+
+    .vocab h3{
+      margin:0;
+      font-size:1rem;
+      color:#154360;
+    }
+
+    .vocab p{
+      margin:8px 0 0 0;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    .media-row{
+      display:flex;
+      gap:14px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+
+    .media-btn{
+      background:#fff;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      border-radius:10px;
+      font-weight:700;
+      color:var(--accent);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      min-width:200px;
+      justify-content:center;
+    }
+
+    .homework{
+      background:#f3fff6;
+      border:1px solid #d7f5df;
+      border-radius:10px;
+      padding:14px;
+      margin-top:10px;
+    }
+
+    .speaking{
+      margin-top:18px;
+      padding:16px;
+      border-radius:12px;
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      border:1px solid var(--border);
+      max-width:640px;
+    }
+
+    .speaking h2{
+      margin:0 0 10px 0;
+      font-size:1.05rem;
+      color:#0f1724;
+    }
+
+    .talk-table{
+      width:100%;
+      border-collapse:collapse;
+      border-radius:10px;
+      overflow:hidden;
+      background:#fff;
+      border:1px solid #e1e9f5;
+      font-size:0.9rem;
+    }
+
+    .talk-table th,
+    .talk-table td{
+      padding:8px 10px;
+      text-align:left;
+    }
+
+    .talk-table th{
+      background:#eef4ff;
+      color:#1b3556;
+      font-weight:700;
+      border-bottom:1px solid #dde6fa;
+    }
+
+    .row-teacher{
+      background:#e7f2ff;
+    }
+
+    .row-student{
+      background:#e8f7ef;
+    }
+
+    .talk-label{
+      font-weight:700;
+    }
+
+    .talk-percent{
+      font-weight:700;
+      color:#0f1724;
+    }
+
+    .talk-time{
+      color:var(--muted);
+    }
+
+    footer{
+      margin-top:20px;
+      color:var(--muted);
+      font-size:0.9rem;
+      text-align:center;
+    }
+
+    @media (max-width:720px){
+      .card{padding:18px;border-radius:14px;}
+      .vocab-grid{flex-direction:column;}
+      .media-row{flex-direction:column;}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <article class="card" role="main">
+      <header>
+        <div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span class="badge">PÓS-AULA</span>
+            <h1>Events, invitations, directions e there is / there are</h1>
+          </div>
+          <div class="meta" style="margin-top:8px;">
+            <strong>Professor:</strong> César &nbsp;•&nbsp;
+            <strong>Aluno:</strong> Isabelle &nbsp;•&nbsp;
+            <strong>Data:</strong> 04/13/2026
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="#" onclick="window.print();return false;">Imprimir / Salvar PDF</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="panel">
+          <p style="margin:0;font-weight:600;color:#08325a;">
+            Aula com revisão de simple past, would rather, prepositions of place, events, invitations, directions e uso prático de there is / there are.
+          </p>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Resumo da Aula</h2>
+          <div class="outline-card">
+            <p style="margin:0 0 8px 0;">
+              Nesta aula, vocês começaram revisando alguns pontos de vocabulário e gramática já vistos, como <strong>yesterday</strong>, <strong>did the laundry</strong>, <strong>washed my car</strong> e a formação de verbos regulares no passado, como <em>relaxed</em>. Também reapareceram expressões com <strong>would rather</strong>, além de uma retomada de palavras como <em>trash can</em>, <em>coke can</em>, <em>next to</em>, <em>near</em>, <em>close</em> e <em>on the corner of</em>.
+            </p>
+            <p style="margin:0 0 8px 0;">
+              Depois disso, a aula entrou no tema principal da unidade: <strong>events</strong>. O professor explicou que vocês iam usar um site sobre o <strong>Grant Park</strong> para interpretar eventos da semana, reciclar vocabulário e praticar conversação real, convidando alguém para um evento, aceitando ou recusando, marcando um horário e explicando como chegar ao local no mapa.
+            </p>
+            <p style="margin:0 0 8px 0;">
+              Antes da parte de conversação mais longa, vocês revisaram estruturas fundamentais para esse tipo de interação, como <em>Would you like to...?</em>, <em>Let’s meet...</em>, <em>What time is the concert?</em> e expressões de aceitação ou recusa, como <em>That sounds good</em>, <em>See you then</em> e <em>Now that’s more my style</em>. O professor também explicou novamente o papel de <strong>would</strong> em frases como <em>I’d love to</em>, mostrando a ideia de deixar a frase mais natural e educada.
+            </p>
+            <p style="margin:0 0 8px 0;">
+              Um ponto muito importante da aula foi a explicação de <strong>there is / there are</strong>. O professor reforçou que essas estruturas têm a ideia de “há / tem” no sentido de existência, e que o uso depende de singular ou plural. Isso foi aplicado diretamente ao contexto dos eventos, como em <em>There is a talk at Harris Theater</em> ou <em>There is a concert on Sunday night</em>.
+            </p>
+            <p style="margin:0 0 8px 0;">
+              Na parte prática, vocês passaram bastante tempo simulando convites e combinações reais usando os eventos do Grant Park. Você teve que dizer que evento havia, em que lugar ele acontecia, em que dia ou horário, e depois combinar encontro, aceitar o convite e dar direções com base no mapa. Entraram estruturas com <strong>at</strong>, <strong>on</strong>, <strong>in</strong>, <strong>from...to...</strong>, <strong>around the corner from</strong>, <strong>across from</strong>, <strong>go down</strong>, <strong>turn left</strong>, <strong>go three blocks</strong> e <strong>on the right</strong>.
+            </p>
+            <p style="margin:0;">
+              O professor destacou que a parte de ficar pensando antes de falar é natural, e que o foco não era velocidade, mas conseguir completar a conversa com o mínimo possível de equívocos grandes. No final, ficou claro que você já conseguiu fazer boa parte da tarefa, mas ainda precisa reforçar principalmente <strong>prepositions of time and place</strong>, especialmente quando usar <em>at</em>, <em>on</em> e <em>in</em>, além de revisar direções e o uso de datas e horários em respostas mais completas.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Key Vocabulary</h2>
+          <div class="vocab-grid">
+            <div class="vocab">
+              <h3>there is / there are</h3>
+              <p style="margin-top:8px;font-size:0.92rem;color:var(--muted);">
+                <em>(pt) há / tem (existência)</em><br>
+                <small>There is a concert at Harris Theater.</small>
+              </p>
+            </div>
+            <div class="vocab green">
+              <h3>across from</h3>
+              <p style="margin-top:8px;font-size:0.92rem;color:var(--muted);">
+                <em>(pt) em frente a</em><br>
+                <small>The museum is across from Soldier Field.</small>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Vocabulário da aula</h2>
+          <div class="outline-card">
+            <h3 style="margin-top:0;">Revisão inicial</h3>
+            <ul>
+              <li><strong>yesterday</strong> – ontem</li>
+              <li><strong>did the laundry</strong> – lavou a roupa / fez a lavanderia</li>
+              <li><strong>washed my car</strong> – lavei meu carro</li>
+              <li><strong>relaxed</strong> – relaxei / relaxado(a)</li>
+              <li><strong>would rather</strong> – preferiria</li>
+              <li><strong>trash can</strong> – lata de lixo / lixeira</li>
+              <li><strong>coke can</strong> – lata de refrigerante</li>
+            </ul>
+
+            <h3>Eventos e convites</h3>
+            <ul>
+              <li><strong>event</strong> – evento</li>
+              <li><strong>concert</strong> – show / concerto</li>
+              <li><strong>talk</strong> – palestra</li>
+              <li><strong>play</strong> – peça</li>
+              <li><strong>exhibit</strong> – exposição</li>
+              <li><strong>would you like to...?</strong> – você gostaria de...?</li>
+              <li><strong>let’s meet</strong> – vamos nos encontrar</li>
+              <li><strong>that sounds good</strong> – isso parece bom / legal</li>
+              <li><strong>see you then</strong> – te vejo então / te vejo lá</li>
+              <li><strong>now that’s more my style</strong> – agora isso faz mais o meu estilo</li>
+              <li><strong>I’d love to</strong> – eu adoraria</li>
+            </ul>
+
+            <h3>Lugares e direções</h3>
+            <ul>
+              <li><strong>Grant Park</strong> – Grant Park</li>
+              <li><strong>Field Museum</strong> – Field Museum</li>
+              <li><strong>Soldier Field</strong> – Soldier Field</li>
+              <li><strong>Harris Theater</strong> – Harris Theater</li>
+              <li><strong>Art Institute</strong> – Art Institute</li>
+              <li><strong>Pavilion</strong> – pavilhão</li>
+              <li><strong>next to</strong> – ao lado de</li>
+              <li><strong>near / close</strong> – perto</li>
+              <li><strong>around the corner from</strong> – virando a esquina de / ao redor da esquina de</li>
+              <li><strong>across from</strong> – em frente a</li>
+              <li><strong>between</strong> – entre</li>
+              <li><strong>on the corner of</strong> – na esquina de</li>
+              <li><strong>go down</strong> – seguir pela rua</li>
+              <li><strong>turn left</strong> – virar à esquerda</li>
+              <li><strong>go three blocks</strong> – andar três quarteirões</li>
+              <li><strong>on the right</strong> – à direita</li>
+            </ul>
+
+            <h3>Tempo e estrutura</h3>
+            <ul>
+              <li><strong>there is</strong> – há / tem (singular)</li>
+              <li><strong>there are</strong> – há / tem (plural)</li>
+              <li><strong>from... to...</strong> – de... até...</li>
+              <li><strong>on Sunday</strong> – no domingo</li>
+              <li><strong>Sunday night</strong> – domingo à noite</li>
+              <li><strong>at 8 PM</strong> – às 8 da noite</li>
+              <li><strong>at 7:30</strong> – às 7h30</li>
+              <li><strong>June ninth</strong> – nove de junho</li>
+              <li><strong>June fifteenth</strong> – quinze de junho</li>
+              <li><strong>fifteenth</strong> – décimo quinto / quinze do mês</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Frases modelo da aula</h2>
+          <div class="outline-card">
+            <ul>
+              <li>I did the laundry yesterday.</li>
+              <li>I washed my car and relaxed.</li>
+              <li>Would you rather go to a rock concert or a classical music concert?</li>
+              <li>There is a talk at Harris Theater.</li>
+              <li>There is an exhibit at the Field Museum.</li>
+              <li>Would you like to go with me?</li>
+              <li>Let’s meet at the Soldier Field.</li>
+              <li>What time is the concert?</li>
+              <li>It is across from the Field Museum.</li>
+              <li>It is on Randolph Street.</li>
+              <li>Go down Michigan Avenue and turn left.</li>
+              <li>Go three blocks and it is on the right.</li>
+              <li>The exhibit is open from nine to five.</li>
+              <li>We’ll meet at eleven.</li>
+              <li>See you on June ninth.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Correções importantes</h2>
+          <div class="outline-card">
+            <ul>
+              <li><strong>Did the laundry:</strong> o professor corrigiu a diferença entre o substantivo <em>laundry</em> e a ação de fazer isso no passado. A forma natural trabalhada foi <strong>did the laundry</strong>.</li>
+              <li><strong>Washed / relaxed:</strong> houve reforço no <strong>-ed</strong> final dos verbos regulares no passado.</li>
+              <li><strong>Trash can:</strong> o professor retomou que <em>can</em> pode ser “poder”, mas também pode ser “lata”, como em <em>trash can</em> e <em>coke can</em>.</li>
+              <li><strong>Next to x near x around:</strong> você relembrou bem que <em>next to</em> é “do lado”, enquanto <em>near / close</em> trazem a ideia de perto, e <em>around</em> está mais ligado a “ao redor”.</li>
+              <li><strong>There is / there are:</strong> essa foi uma das explicações centrais da aula. O professor reforçou que isso é “há / tem” no sentido de existência, e não o verbo <em>have</em>.</li>
+              <li><strong>At x on x in:</strong> esse foi o ponto que mais exigiu atenção. Em vários momentos, o professor corrigiu quando você usou <em>in</em> em vez de <em>at</em>, principalmente ao falar de local específico de evento, como <em>at Harris Theater</em>.</li>
+              <li><strong>From... to...:</strong> ao falar do horário de um evento ou exposição, o professor destacou que faltou a estrutura completa <strong>from... to...</strong>.</li>
+              <li><strong>Fifteenth:</strong> houve correção de pronúncia para diferenciar melhor <em>fifteen</em> de <em>fifteenth</em>.</li>
+              <li><strong>Go x assist:</strong> o professor mostrou que, se você usa <em>go</em>, o mais natural é pensar no lugar. Se quiser focar na peça ou no filme em si, pode precisar de outra lógica, como <em>watch</em> ou <em>see</em>, dependendo do contexto.</li>
+              <li><strong>Across from:</strong> você teve uma boa percepção do sentido de “em frente”, mas o professor reforçou que valia mais usar essa estrutura pronta do que tentar improvisar com <em>front</em>.</li>
+              <li><strong>On the right:</strong> apareceu como correção útil e prática na parte de directions.</li>
+              <li><strong>Velocidade x naturalidade:</strong> no final, o professor deixou claro que o tempo que você leva para pensar é normal. O foco agora é trocar o “hum...” por pequenas frases em inglês, mesmo simples, para ganhar naturalidade.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Transcrição &amp; Gravação</h2>
+          <div class="media-row">
+            <a class="media-btn" href="#" role="button">📄 Acessar transcrição</a>
+
+            <a
+              class="media-btn"
+              href="https://youtu.be/W_wnkZ13DCQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              role="button"
+              style="background:linear-gradient(180deg,#1f6fd1,#2f86e6);color:#fff;border:none;min-width:260px;"
+            >
+              🎥 Assistir gravação (acesso privado)
+            </a>
+          </div>
+        </section>
+
+        <section class="speaking" aria-label="Distribuição de fala">
+          <h2>Tempo de Fala (Talk Time)</h2>
+          <table class="talk-table">
+            <thead>
+              <tr>
+                <th>Quem falou</th>
+                <th>Porcentagem</th>
+                <th>Duração aproximada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="row-teacher">
+                <td><span class="talk-label">César (Professor)</span></td>
+                <td><span class="talk-percent">62%</span></td>
+                <td class="talk-time">~37 minutos</td>
+              </tr>
+              <tr class="row-student">
+                <td><span class="talk-label">Isabelle</span></td>
+                <td><span class="talk-percent">38%</span></td>
+                <td class="talk-time">~23 minutos</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom:8px;">Homework</h2>
+          <div class="homework">
+            <p style="margin:0 0 8px 0;">
+              📌 <strong>Lição de casa (como combinado em aula):</strong>
+            </p>
+            <ul style="margin:0 0 6px 18px;padding:0;font-size:0.94rem;color:var(--muted);">
+              <li>Ler o pós-aula de 2 a 3x na semana.</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:14px;">
+            <a class="btn" href="https://wa.me" style="background:#25D366;border-radius:10px;box-shadow:none;">
+              💬 Falar comigo no WhatsApp
+            </a>
+          </div>
+        </section>
+
+      </main>
+
+      <footer>
+        <p style="margin:18px 0 0 0;color:var(--muted);font-size:0.9rem;">
+          © 2025 CZK English • Este conteúdo é exclusivo para fins educacionais. • Suporte: czkenglish@gmail.com
+        </p>
+      </footer>
+    </article>
+  </div>
+</body>
+</html>
